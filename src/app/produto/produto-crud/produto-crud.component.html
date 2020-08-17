@@ -1,1 +1,32 @@
-<p>produto-crud works!</p>
+<form>
+  <div>
+
+<div class="container">
+  <h2>Cadastro/Edição de Produto</h2>
+  <form >
+      <div class="form-group">
+          <label for="descricao" class="form-control-label">Descrição</label>
+          <input type="text" class="form-control form-control-danger" placeholder="Informe Descrição"
+           required
+           name="nome">
+      </div>
+      <div class="form-group">
+          <label for="preco">Preço</label>
+          <input type="text" class="form-control" placeholder="Informe o preço"
+           required
+           name="preco"
+           >
+      </div>
+      <div class="form-group">
+        <label for="categoria">Categoria</label>
+        <select class="browser-default custom-select">
+          <option selected>Selecione uma categoria</option>
+          <option value="1">Eletrodomestico</option>
+          <option value="2">Eletronicos</option>
+          <option value="3">Cozinha</option>
+        </select>
+      </div>
+      <button style="margin-right: 5px;"type="submit" class="btn btn-success">Salvar</button>
+      <button class="btn btn-secondary" routerLink="/">Voltar </button>
+  </form>
+  </div>

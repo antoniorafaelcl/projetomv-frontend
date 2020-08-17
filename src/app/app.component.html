@@ -1,9 +1,18 @@
-<header>
-  <h1>Projeto MV</h1>
-</header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  Antonio Rafael &copy; 2020
-</footer>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Projeto MV</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['produto']">Produtos <span class="sr-only">
+
+        </span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
