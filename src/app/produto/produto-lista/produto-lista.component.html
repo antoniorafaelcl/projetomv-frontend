@@ -4,46 +4,44 @@
   type="button"
   class="btn btn-primary"
   [routerLink]="['cadastroEdicao']">Adicionar Produto</button>
+<form [formGroup]="formAjustePorCategoria" (ngSubmit)="ajustarPrecoCategoria()">
+  <div>
+  <p>Ajustar preço produto por categoria: </p>
+  <input  formControlName="preco" name="preco" type="text" class="form-control-sm" placeholder="Informe o preço" style="margin-right: 2%; margin-left: 2%;"/>
+  <input  formControlName="categoria" name="categoria" type="text" class="form-control-sm" placeholder="Informe a categoria" style="margin-right: 2%; margin-left: 2%;"/>
+  <button  type="submit"
+  class="btn btn-primary" (click)="ajustarPrecoCategoria()"> Ajustar</button>
+</div>
+</form>
+<form [formGroup]="formAjustePorRangePercentual" (ngSubmit)="ajustarPrecoRange()">
+  <div>
+    <p>Ajustar preço produto por range percentual: </p>
+    <input  formControlName="preco" name="preco" type="text" class="form-control-sm" placeholder="Informe o preço" style="margin-right: 2%; margin-left: 2%; margin-bottom: 5px;"/>
+    <input  formControlName="percentualInicial" name="percentualInicial" type="text" class="form-control-sm" placeholder="Informe o Range Inicial" style="margin-right: 2%; margin-left: 2%;"/>
+    <input  formControlName="percentualFim" name="percentualFim" type="text" class="form-control-sm" placeholder="Informe o Range Final" style="margin-right: 2%; margin-left: 2%;"/>
+    <button type="submit"
+    class="btn btn-primary"> Ajustar</button>
+  </div>
+</form>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Código</th>
       <th scope="col">Descrição</th>
       <th scope="col">Preço</th>
       <th scope="col">Categoria</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Fogão</td>
-      <td>R$ 800,00</td>
-      <td>Eletrodomestico</td>
+  <tbody *ngIf="produtos?.length">
+    <tr *ngFor="let produto of produtos" >
+      <th scope="row">{{produto.id}}</th>
+      <td>{{produto.descricao}}</td>
+      <td>{{produto.preco}}</td>
+      <td>{{produto.categoria.descricao}}</td>
       <td>
-        <button style="margin-right: 5px;" type="button" class="btn btn-info">Editar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
-      </td>
-
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Notebook</td>
-      <td>R$ 3,000</td>
-      <td>Eletronico</td>
-      <td>
-        <button style="margin-right: 5px;" type="button" class="btn btn-info">Editar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Mesa de Jantar</td>
-      <td>R$ 500,00</td>
-      <td>Cozinha</td>
-      <td>
-        <button style="margin-right: 5px;" type="button" class="btn btn-info">Editar</button>
-        <button type="button" class="btn btn-danger">Excluir</button>
+        <button style="margin-right: 5px;" type="button" class="btn btn-info" (click)="editar(produto.id)">Editar</button>
+        <button type="button" class="btn btn-danger" (click)="excluir(produto.id)">Excluir</button>
       </td>
     </tr>
   </tbody>

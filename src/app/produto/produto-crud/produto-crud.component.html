@@ -1,32 +1,29 @@
-<form>
-  <div>
-
 <div class="container">
   <h2>Cadastro/Edição de Produto</h2>
-  <form >
+  <form [formGroup]="formProduto" (ngSubmit)="salvar()">
       <div class="form-group">
           <label for="descricao" class="form-control-label">Descrição</label>
           <input type="text" class="form-control form-control-danger" placeholder="Informe Descrição"
-           required
-           name="nome">
+           required formControlName="descricao"
+           name="descricao">
       </div>
       <div class="form-group">
           <label for="preco">Preço</label>
           <input type="text" class="form-control" placeholder="Informe o preço"
-           required
+           required formControlName="preco"
            name="preco"
            >
       </div>
       <div class="form-group">
         <label for="categoria">Categoria</label>
-        <select class="browser-default custom-select">
+        <select class="browser-default custom-select" formControlName="idCategoria">
           <option selected>Selecione uma categoria</option>
           <option value="1">Eletrodomestico</option>
           <option value="2">Eletronicos</option>
           <option value="3">Cozinha</option>
         </select>
       </div>
-      <button style="margin-right: 5px;"type="submit" class="btn btn-success">Salvar</button>
-      <button class="btn btn-secondary" routerLink="/">Voltar </button>
-  </form>
+      <button style="margin-right: 5px;" type="submit" class="btn btn-success">Salvar</button>
+      <button class="btn btn-secondary" routerLink="/produto">Voltar </button>
+    </form>
   </div>
